@@ -128,10 +128,11 @@ import express from "express";
 import dotenv from "dotenv";
 import Routes from "./routes/issuance.routes";
 import { pool } from "./config/db";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 app.use("/api", Routes);
 
