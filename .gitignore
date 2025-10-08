@@ -1,2 +1,4 @@
 /verification-service/.env
 /verification-service/node_modules/
+/issuance-service/.env
+/issuance-service/node_modules/
