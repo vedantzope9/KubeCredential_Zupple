@@ -12,6 +12,6 @@ export const pool = new Pool({
   ssl: { rejectUnauthorized: false } 
 });
 
-pool.connect()
-  .then(() => console.log("Connected to Neon PostgreSQL"))
-  .catch((err) => console.error(" DB connection error:", err));
+// pool.connect()
+//   .then(() => console.log("Connected to Neon PostgreSQL"))
+//   .catch((err) => console.error(" DB connection error:", err));
