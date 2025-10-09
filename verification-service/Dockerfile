@@ -33,7 +33,7 @@ COPY --from=builder /app/dist ./dist
 # COPY --chown=appuser:appgroup --from=builder /app/dist ./dist
 
 # Expose port used by Node.js app
-EXPOSE 4000
+EXPOSE 3000
 
 # Start the service
 CMD ["node", "dist/index.js"]
