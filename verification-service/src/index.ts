@@ -12,6 +12,7 @@ app.use(cors());
 app.use("/api", verificationRoutes);
 
 const PORT = process.env.PORT || 3000;
+const WORKER_ID = process.env.WORKER_ID || "unknown";
 
 app.use(express.json());
 

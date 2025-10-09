@@ -18,7 +18,8 @@ export class IssuanceService {
     }
     
     const timeStamp = new Date().toISOString()
-    record = await this.repository.createCredential(credential_hash,timeStamp,1)
+    const WORKER_ID = process.env.WORKER_ID || "unknown";
+    record = await this.repository.createCredential(credential_hash,timeStamp,WORKER_ID)
     
     return {
       valid: true,

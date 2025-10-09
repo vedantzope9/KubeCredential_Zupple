@@ -18,7 +18,7 @@ export class CredentialRepository {
     };
   }
 
-  async createCredential(credential_hash:string,timestamp:String,worker_id:Number): Promise<Credential>{
+  async createCredential(credential_hash:string,timestamp:String,worker_id:string): Promise<Credential>{
     const insertQuery = `INSERT INTO credentials (credential_hash, worker_id, timestamp) 
             VALUES ($1, $2, $3) 
             RETURNING credential_id`
