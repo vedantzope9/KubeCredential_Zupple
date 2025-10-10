@@ -30,14 +30,15 @@ metadata:
   name: credential-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+#    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  ingressClassName: "nginx"  
   tls:
     - hosts:
-        - 104-208-120-163.nip.io       # 👈 use your public IP in nip.io format
+        - 104.208.120.163.nip.io       # 👈 use your public IP in nip.io format
       secretName: kube-credential-tls
   rules:
-    - host: 104-208-120-163.nip.io
+    - host: 104.208.120.163.nip.io
       http:
         paths:
           - path: /api/issue
