@@ -35,8 +35,8 @@ KubeCredential is a microservices-based credential management system that allows
 ```mermaid
 graph TD
     A[React Frontend<br/>Netlify] -->|API Calls| B[Ingress Controller<br/>Azure]
-    B -->|/api/issue| C[Issuance Service<br/>Azure Container Instance]
-    B -->|/api/verify| D[Verification Service<br/>Azure Container Instance]
+    B -->|/api/issue| C[Issuance Service<br/>Azure Kubernetes Instance]
+    B -->|/api/verify| D[Verification Service<br/>Azure Kubernetes Instance]
     C --> E[(PostgreSQL<br/>NeonDB)]
     D --> E
     
@@ -158,10 +158,8 @@ KubeCredential_Zupple/
 
 | Column | Type | Description |
 |--------|------|-------------|
-| id | SERIAL PRIMARY KEY | Unique identifier |
-| issuer | VARCHAR | Credential issuer |
-| receiver | VARCHAR | Credential receiver |
-| credential | TEXT | JSON credential data |
+| redential_id | SERIAL PRIMARY KEY | Unique identifier |
+| credential_hash | VARCHAR | Hash of Credential |
 | timestamp | TIMESTAMP | Issue timestamp |
 | worker_id | VARCHAR | Worker pod identifier |
 
@@ -185,15 +183,17 @@ KubeCredential_Zupple/
 **Response** (Success):
 ```json
 {
-  "message": "Credential issued successfully by worker-1",
-  "data": {
-    "id": 1,
-    "issuer": "example-issuer",
-    "receiver": "example-receiver",
-    "credential": "credential-data",
-    "timestamp": "2024-01-15T10:30:00.000Z",
-    "worker_id": "worker-n"
-  }
+    "valid": true,
+    "message": "Credential created successfully"
+}
+```
+
+If Credential exists already :
+```json
+{
+    "valid": false,
+    "message": "Credential already exists",
+    "created_by": "issue-service-b5675bc5b-6qctk"
 }
 ```
 
@@ -213,12 +213,10 @@ KubeCredential_Zupple/
 **Response** (Valid):
 ```json
 {
-  "valid": true,
-  "message": "Credential is valid",
-  "data": {
-    "worker_id": "worker-n",
-    "timestamp": "2024-01-15T10:30:00.000Z"
-  }
+    "valid": true,
+    "message": "Credential verified successfully",
+    "worker_id": "issue-service-b5675bc5b-g7gkt",
+    "timestamp": "2025-10-10T19:25:10.490Z"
 }
 ```
 
