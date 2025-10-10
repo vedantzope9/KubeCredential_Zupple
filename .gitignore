@@ -1,6 +1,8 @@
 /verification-service/.env
 /verification-service/node_modules/
+/verification-service/dist
 /issuance-service/.env
 /issuance-service/node_modules/
+/issuance-service/dist
 /k8s/secrets.yaml
 /k8s/cluster-issuer.yaml

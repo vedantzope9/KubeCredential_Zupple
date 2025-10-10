@@ -28,7 +28,7 @@ const VerifyCredential = () => {
       return;
     }
 try {
-    const response = await axios.post("http://localhost:3000/api/verify", {
+    const response = await axios.post("http://104.208.120.163/api/verify", {
       issuer,
       reciever: receiver, // match backend spelling
       credential,

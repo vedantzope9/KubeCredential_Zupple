@@ -26,7 +26,7 @@ const IssueCredential = () => {
     try {
       setLoading(true);
       // ✅ Send POST request to your backend
-      const response = await axios.post("http://localhost:3000/api/issue", {
+      const response = await axios.post("http://104.208.120.163/api/issue", {
         issuer,
         reciever,  // ✅ match backend spelling
         credential,
