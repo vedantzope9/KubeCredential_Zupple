@@ -1,12 +1,44 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: credential-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: "nginx"
+# spec:
+#   rules:
+#     - http:
+#         paths:
+#           - path: /api/issue
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: issue-service
+#                 port:
+#                   number: 80
+#           - path: /api/verify
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: verify-service
+#                 port:
+#                   number: 80
+
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: credential-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  tls:
+    - hosts:
+        - 104-208-120-163.nip.io       # 👈 use your public IP in nip.io format
+      secretName: kube-credential-tls
   rules:
-    - http:
+    - host: 104-208-120-163.nip.io
+      http:
         paths:
           - path: /api/issue
             pathType: Prefix
