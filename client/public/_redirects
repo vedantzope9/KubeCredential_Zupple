@@ -1,0 +1,2 @@
+# Proxy API requests to backend
+/api/*  https://104.208.120.163.nip.io/api/:splat  200
