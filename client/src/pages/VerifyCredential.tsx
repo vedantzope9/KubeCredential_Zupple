@@ -28,7 +28,7 @@ const VerifyCredential = () => {
       return;
     }
 try {
-    const response = await axios.post("/api/verify", {
+    const response = await axios.post("https://kubecred.duckdns.org/api/verify", {
       issuer,
       reciever: receiver, // match backend spelling
       credential,

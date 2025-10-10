@@ -26,7 +26,7 @@ const IssueCredential = () => {
     try {
       setLoading(true);
       // ✅ Send POST request to your backend
-      const response = await axios.post("/api/issue", {
+      const response = await axios.post("https://kubecred.duckdns.org/api/issue", {
         issuer,
         reciever,  // ✅ match backend spelling
         credential,
